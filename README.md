@@ -3,6 +3,11 @@ This article discusses the differences between app functions, edge functions, an
 
 ## Different types of functions
 An app that uses Supabase has plenty of choices for how and where to implement different functions:
+- **App Functions** are part of your client application and run in the context of the user's device
+- **PostgreSQL Functions** run in the context of the PostgreSQL database server
+- **Edge Functions** run on Deno Deploy, a hosted cloud service with nodes all over the world, ensuring the functions run as close to your users as possible
+
+Your application can use any or all of these types of functions, and each of these types has specific advantages and disadvanges, based on the your use case(s).
 
 ### App Functions
 App functions run in the context of the application and are typically run on the user's device (a laptop or desktop computer, a phone, a tablet, or even a tv or IOT device).  These functions are written in the app's language such as React, Angular, Swift, Flutter, etc. and run inside the context of a web browser (for web and PWA apps) or in the context of a native, compiled app.
