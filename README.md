@@ -1,3 +1,5 @@
+[ WORK IN PROGRESS ]
+
 # Functions Compared: App functions, PostgreSQL functions, and Edge functions
 This article discusses the differences between app functions, edge functions, and PostgreSQL functions and when to use each type.
 
@@ -61,4 +63,14 @@ Depending on where your database server is located in relationship to your end u
 Edge functions operate somewhere in the middle, between your application and your database server, and are designed to be small and extremely fast.
 
 #### Edge Function Strengths
+##### Secure
+Edge functions run in an environment that can't be accessed by users of your application (as app functions can be) so the're much more secure.
+##### Powerful (since they can use elevated security privileges)
+Since they're running in a secure environment, edge functions can use the `service role` key, which gives your functions more complete access to your PostgreSQL database.  This allows you to perform functions to do things like add, modify, or delete users.  Edge functions using the `service role` key also can bypass any RLS (Row Level Security) Policies as well.  
+
 #### Edge Function Weaknesses
+##### Short-lived
+Edge functions have an execution time limit, so they're designed for short, fast operations.  They'll usually time out if you try to use them to perform long-running processes.
+##### Limits and Cost
+Based on your project's subscription level, there are execution limits for edge functions based on monthly runtime hours, number of invocations, script size, and number of functions.
+
